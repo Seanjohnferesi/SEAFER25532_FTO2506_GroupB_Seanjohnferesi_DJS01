@@ -6,6 +6,9 @@
     <title>Forger Talks</title>
     <link rel="icon" type="image/png" href="images/tab-img.png" sizes="64x64">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,5 +24,97 @@
             </div>
         </div>
     </header>
+
+    <main>
+        <div class="filter">
+            <h2>Filter by:</h2>
+            <select name="genres" id="">
+                <option value="">All Genres</option>
+            </select>
+            <select name="updates" id="">
+                <option value="">Recently Updated</option>
+            </select>
+        </div>
+
+        <section class="podcast-grid">
+            <div class="podcast-container" id="podcast">
+                <div class="podcast-img"></div>
+                <h2>Podcast Title</h2>
+
+                <div class="season-wrapper">
+                    <img src="images/season.png" alt="calender icon">
+                    <span>3 seasons</span>
+                </div>
+
+                <div class="genre-wrapper">
+                    <div>Technology</div>
+                    <div>Business</div>
+                </div>
+
+                <p>Updated 2 days ago</p>
+            </div>
+        </section>
+
+        <section class="modal" id="modal">
+            <div class="modal-content">
+                <div class="title-btn-wrapper">
+                    <h1>Podcast Title</h1>
+                    <div class="close-btn" id="close-btn">
+                        <img src="images/cross-black.png" alt="cross">
+                    </div>
+                </div>
+
+                <div class="flex-wrapper">
+                    <div class="pod-img"></div>
+                    <div class="pod-info-container">
+                        <div class="pod-description">
+                            <p>Description</p>
+                            <p class="pod-info">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi porro deserunt sunt. Delectus voluptatum exercitationem earum fugiat obcaecati ducimus recusandae repellat dolores hic expedita sunt, assumenda repellendus, doloribus mollitia officia.
+                            </p>
+
+                            <p>Genres</p>
+                            <div class="genre-flex">
+                                <div>Technology</div>
+                                <div>Business</div>
+                                <div>Innovation</div>
+                                <div>Enterpreneurship</div>
+                            </div>
+
+                            <div class="date">
+                                <img src="images/calendar.png" alt="a calender icon">
+                                <p>Last Updated January, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pod-season-container">
+                    <h2>Seasons</h2>
+
+                    <div class="season-list-container">
+                        <div class="season-list">
+                            <div>
+
+                                <div class="flex-container">
+                                <p class="season-title">Season 1: Getting Started</p>
+                                <p class="season-description">Introduction to the fundamentals</p>
+                                </div>
+
+                                <p class="ep-numb">12 episodes</p>
+                            </div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
 </body>
 </html>
