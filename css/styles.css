@@ -34,6 +34,7 @@ body{
         position: fixed;
         top: 0;
         right: 0;
+        z-index: 1;
     }
 
     .icon-name-wrapper{
@@ -188,6 +189,7 @@ body{
         opacity: 0;
         pointer-events: none;
         transition: opacity 1.2s ease;
+        z-index: 2;
     }
 
     .display-modal{
@@ -201,14 +203,21 @@ body{
         padding: 15px 25px;
         background-color: var(--color-bg);
         border-radius: 8px;
+        overflow-y: auto;
+        scrollbar-width: none;      
+        -ms-overflow-style: none;
     }
+
+    .modal-content::-webkit-scrollbar {
+        display: none;
+    }
+
 
     .title-btn-wrapper{
         display: flex;
         justify-content:space-between;
         align-items: center;
-        margin-bottom: 25px;
-
+        margin-bottom: 25px;;
     }
 
     .title-btn-wrapper > h1{
@@ -232,11 +241,12 @@ body{
     }
 
     .pod-img{
-        width: 250px;
-        height: 220px;
-        background-color: var(--color-btn);
+        width: 300px;
+        height: 300px;
         border-radius: 8px;
-        display: inline;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .flex-wrapper{
@@ -321,7 +331,7 @@ body{
         display: none;/* Chrome, Safari, Opera */
     }
 
-    .season-list > div{
+    .seasons-clm{
         border: 1px solid var(--color-border);
         border-radius: 8px;
         width: 100%;
@@ -345,7 +355,7 @@ body{
         font-size: 0.75rem;
         color: var(--color-content-text);
     }
-    .ep-numb{
+    .ep-num{
         font-size: .85rem;
         color: var(--color-content-text);
     }

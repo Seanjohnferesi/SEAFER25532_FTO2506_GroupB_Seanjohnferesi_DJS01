@@ -1,11 +1,16 @@
+import { podcasts } from "./data.js";
 import { closeModal, modal} from "./dom.js";
+import { renderModalInfo } from "./render.js";
 
 export function modalOpen () {
     const openModal = document.querySelectorAll(".podcast-container")
 
-    openModal.forEach(m => {
-        m.addEventListener("click", () => {
+    openModal.forEach( (card, index) => {
+        card.addEventListener("click", () => {
+            renderModalInfo(podcasts[index])
             modal.classList.add("display-modal")
+
+            document.body.style.overflow = "hidden";
         })
     })
 }
@@ -13,6 +18,7 @@ export function modalOpen () {
 export function modalClose () {
     closeModal.addEventListener("click", () => {
         modal.classList.remove("display-modal")
+        document.body.style.overflow = "";
         console.log("clicked")
 })
 }

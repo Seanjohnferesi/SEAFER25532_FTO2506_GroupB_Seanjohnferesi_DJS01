@@ -1,5 +1,5 @@
-import { podcasts, genres } from "./data.js";
-import {  podGrid } from "./dom.js";
+import { podcasts, genres, seasons } from "./data.js";
+import {  podGrid, modalTitle, modalDesc, modalImg, modalGenres, modalDate, modalSeasons} from "./dom.js";
 
 export function renderPodcast() {
     podcasts.forEach(podcast => {
@@ -68,3 +68,59 @@ export function renderPodcast() {
     })
 }
 
+export function renderModalInfo(podcast) {
+    modalTitle.textContent = podcast.title;
+    modalDesc.textContent = podcast.description;
+    modalImg.style.backgroundImage = `url(${podcast.image})`;
+
+    const showGenres = genres.filter(genre => genre.shows.includes(podcast.id))
+    modalGenres.innerHTML = "";
+    showGenres.forEach(genre => {
+        let genreItem = document.createElement("div");
+        genreItem.classList.add("genre-item");
+        genreItem.textContent = genre.title;
+
+        modalGenres.appendChild(genreItem);
+    });
+
+    const formattedDate = new Date(podcast.updated).toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+
+    modalDate.textContent = `Last Updated ${formattedDate}`;
+
+    // seasons
+    modalSeasons.innerHTML = "";
+   
+    const podSeasons = seasons.find(s => s.id === podcast.id)
+    if(podSeasons) {
+        podSeasons.seasonDetails.forEach((season, index) => {
+           
+            let seasonDiv = document.createElement("div");
+            seasonDiv.classList.add("seasons-clm")
+
+            let flexContainer = document.createElement("div");
+            flexContainer.classList.add("flex-container")
+            seasonDiv.appendChild(flexContainer);
+
+            let seasonTitle = document.createElement("p");
+            seasonTitle.classList.add("season-title")
+            seasonTitle.textContent = `Season ${index + 1} : ${season.title}`
+            flexContainer.appendChild(seasonTitle);
+
+            let seasonDesc = document.createElement("p");
+            seasonDesc.classList.add("season-description");
+            seasonDesc.textContent = season.title;
+            flexContainer.appendChild(seasonDesc);
+
+            let epNum = document.createElement("p");
+            epNum.classList.add("ep-num");
+            epNum.textContent = `${season.episodes} episodes`
+            seasonDiv.appendChild(epNum);
+
+            modalSeasons.appendChild(seasonDiv);
+        })
+    }
+}

@@ -1,14 +1,7 @@
-import { modalOpen, modalClose } from "./modalManager.js";
-import { renderPodcast } from "./render.js";
-// import { genres, podcast } from "./data.js";
+import { podcasts } from "./scripts/data.js";
+import { modalOpen, modalClose } from "./scripts/modalManager.js";
+import {  renderPodcast } from "./scripts/render.js";
 
 renderPodcast()
-
-modalOpen();
+modalOpen(podcasts);
 modalClose();
-
-// const showGenres = genres
-//     .filter(genre => genre.shows.includes(podcast.id))
-//     .map(genre => genre.title)
-
-// console.log(showGenres)
