@@ -1,10 +1,13 @@
-import { closeModal, modal, renderPod } from "./dom.js";
+import { closeModal, modal} from "./dom.js";
 
 export function modalOpen () {
-    renderPod.addEventListener("click", () => {
-        modal.classList.add("display-modal")
-        console.log("clicked")
-})
+    const openModal = document.querySelectorAll(".podcast-container")
+
+    openModal.forEach(m => {
+        m.addEventListener("click", () => {
+            modal.classList.add("display-modal")
+        })
+    })
 }
 
 export function modalClose () {

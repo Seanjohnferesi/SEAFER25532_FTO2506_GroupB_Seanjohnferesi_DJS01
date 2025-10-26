@@ -1,10 +1,7 @@
-import { podcasts } from "./data.js";
-import { renderPod, podGrid } from "./dom.js";
+import { podcasts, genres } from "./data.js";
+import {  podGrid } from "./dom.js";
 
 export function renderPodcast() {
-    //podcast grid
-    podGrid.classList.add("podcast-grid");
-    
     podcasts.forEach(podcast => {
         // podcast container 
         let card = document.createElement("div")
@@ -40,27 +37,34 @@ export function renderPodcast() {
         seasonWrapper.appendChild(seasons);
 
         // podcast genres
-        let genreWrapper = document.createElement("div")
-        genreWrapper.classList.add("genre-wrapper")
+        const showGenres = genres.filter(genre => genre.shows.includes(podcast.id))
 
-        podcast.genres.forEach(genre => {
+        let genreWrapper = document.createElement("div");
+        genreWrapper.classList.add("genre-wrapper");
+
+        showGenres.forEach(genre => {
             let gen = document.createElement("div");
             gen.classList.add("genre-item");
-            gen.textContent = genre;
+            gen.textContent = genre.title;
             genreWrapper.appendChild(gen)
+            // console.log(title)
         })
         card.appendChild(genreWrapper);
 
         // podacast last update
+        const formattedDate = new Date(podcast.updated).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
         let updateTime = document.createElement("p");
         updateTime.classList.add("update-time")
-        updateTime.textContent = `Updated ${podcast.updated}`;
+        updateTime.textContent = `Updated ${formattedDate}`;
         card.appendChild(updateTime);
 
         podGrid.appendChild(card)
         
     })
-
-    renderPod.appendChild(podGrid);
 }
 
