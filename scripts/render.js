@@ -1,5 +1,6 @@
 import { podcasts, genres, seasons } from "./data.js";
 import {  podGrid, modalTitle, modalDesc, modalImg, modalGenres, modalDate, modalSeasons} from "./dom.js";
+import { formatDate } from "./utils/formatDate.js";
 
 export function renderPodcast() {
     podcasts.forEach(podcast => {
@@ -52,11 +53,7 @@ export function renderPodcast() {
         card.appendChild(genreWrapper);
 
         // podacast last update
-        const formattedDate = new Date(podcast.updated).toLocaleDateString("en-US", {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        });
+        const formattedDate = formatDate(podcast.updated);
 
         let updateTime = document.createElement("p");
         updateTime.classList.add("update-time")
@@ -83,12 +80,7 @@ export function renderModalInfo(podcast) {
         modalGenres.appendChild(genreItem);
     });
 
-    const formattedDate = new Date(podcast.updated).toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    });
-
+    const formattedDate = formatDate(podcast.updated);
     modalDate.textContent = `Last Updated ${formattedDate}`;
 
     // seasons

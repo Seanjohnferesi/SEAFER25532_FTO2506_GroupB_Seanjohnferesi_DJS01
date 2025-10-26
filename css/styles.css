@@ -25,15 +25,16 @@ body{
 @layer Header{
     header{
         height: 75px;
-        width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 0 25px;
         border-bottom: 1px solid var(--color-border);
         background-color: var(--color-header);
         position: fixed;
         top: 0;
         right: 0;
+        left: 0;
         z-index: 1;
     }
 
@@ -56,15 +57,16 @@ body{
     .profile-wrapper{
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: 15px;
     }
 
-    .profile-wrapper > img{
+    .search-icon{
         width: 25px;
         height: 25px;
     }
     
-    .profile > img{
+    .profile{
         height: 40px;
         width: 40px;
         border-radius: 50%;
@@ -360,4 +362,98 @@ body{
         color: var(--color-content-text);
     }
     
+}
+
+/* MOBILE VIEW */
+ @media(max-width:576px){
+    body{
+        padding: 75px 20px 45px 20px;
+    }
+
+    header{
+        padding: 0 8px;
+        height: 70px;
+    }
+
+    h1{
+        font-size: 1.4rem;
+    }
+
+    .icon-name-wrapper > img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-wrapper{
+        gap: 20px;
+    }
+
+    .search-icon {
+        width: 18px;
+        height: 18px
+    }
+
+    .profile{
+        width: 35px;
+        height: 35px;
+    }
+
+    .filter{
+        justify-content: center;
+    }
+
+    .filter >  h2{
+        font-size: 15px;
+    }
+
+    .filter > select{
+        font-size: 14px;
+    }
+
+    .podcast-container:hover{
+        transform: none;
+    }
+
+    .podcast-img{
+        height: 200px;
+        /* object-fit: cover; */
+    }
+
+    .pod-title{
+        font-size: 1.12rem;
+    }
+
+    .genre-item{
+        font-size: .8rem;
+    }
+
+    .update-time{
+        font-size: .95rem
+    }
+
+    .podcast-grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* modal */
+
+    .modal-content{
+        display: flex;
+        flex-direction: column;
+        width: 475px;
+    }
+
+    .flex-wrapper{
+        flex-direction: column;
+    }
+}
+
+/* tablet view */
+@media(max-width:1023px){
+    .podcast-grid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+        gap: 25px;
+    }
 }
